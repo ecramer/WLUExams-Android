@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WLU Exams</string>
+    <string name="email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="logo">WLU Logo</string>
+    <string name="add_exam">Add Exam</string>
+    <string name="remove_exam">Remove Exam</string>
+    <string name="search_title">Search Exams</string>
+    <string name="search_hint">Search Exams</string>
+    <string name="action_search">Search Exams</string>
+    <string name="text_view">You have no exams saved!</string>
+    <string name="button_text">Search</string>
+    <string name="logout">Logout</string>
+    
+
+    <style name="ButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+</resources>
