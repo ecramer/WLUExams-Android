@@ -142,11 +142,11 @@ public class ExamListFragment extends ListFragment implements
 
 			if (departmentID == null) {
 
-				link = "http://hopper.wlu.ca/~cram8680/php/Exams/list.php";
+				link = Config.serverURL + "/Exams/list.php";
 
 			} else {
 
-				link = "http://hopper.wlu.ca/~cram8680/php/Departments/getall.php";
+				link = Config.serverURL + "/Departments/getall.php";
 				nameValuePairs.add(new BasicNameValuePair("departmentID",
 						departmentID));
 

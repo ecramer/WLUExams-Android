@@ -7,10 +7,12 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -51,13 +53,15 @@ public class LoginFragment extends Fragment {
 		btnRegister = (Button) v.findViewById(R.id.register);
 		btnRegister.setOnClickListener(new View.OnClickListener() {
 
+
 			@Override
 			public void onClick(View v) {
-				
-				RegisterUser registration = new RegisterUser();
-				registration.execute(txtEmail.getText().toString(), txtPassword
-						.getText().toString());
-
+				if(inputIsValid()){
+					String emailAddress = txtEmail.getText().toString();
+					String password = txtPassword.getText().toString();
+					RegisterUser registration = new RegisterUser();
+					registration.execute(emailAddress, password);
+				}
 			}
 		});
 
@@ -66,15 +70,27 @@ public class LoginFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-
-				LoginUser login = new LoginUser();
-				login.execute(txtEmail.getText().toString(), txtPassword
-						.getText().toString());
-
+				if (inputIsValid()){
+					LoginUser login = new LoginUser();
+					login.execute(txtEmail.getText().toString(), txtPassword
+							.getText().toString());
+				}
 			}
 		});
 		return v;
 
+	}
+	
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	private boolean inputIsValid(){
+		String emailAddress = txtEmail.getText().toString();
+		String password = txtPassword.getText().toString();
+		if(emailAddress.isEmpty() || password.isEmpty()){
+			Toast.makeText(getActivity(), "Username and password cannot be blank.", Toast.LENGTH_SHORT).show();
+			return false;
+		} else {
+			return true;
+		}	
 	}
 	
 	private class RegisterUser extends AsyncTask<String, Void, String> {
@@ -84,7 +100,7 @@ public class LoginFragment extends Fragment {
 			
 			String email = params[0];
 			String password = params[1];
-			String link = "http://hopper.wlu.ca/~wluexams/php/Users/add.php";
+			String link = Config.serverURL + "/Users/add.php";
 			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("email", email));
             nameValuePairs.add(new BasicNameValuePair("password", password));
@@ -140,7 +156,7 @@ public class LoginFragment extends Fragment {
 
 				String email = params[0];
 				String password = params[1];
-				String link = "http://hopper.wlu.ca/~wluexams/php/Users/authenticate.php";
+				String link = Config.serverURL + "/Users/authenticate.php";
 				ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("email", email));
                 nameValuePairs.add(new BasicNameValuePair("password", password));

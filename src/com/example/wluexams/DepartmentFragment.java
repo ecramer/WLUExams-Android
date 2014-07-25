@@ -95,7 +95,7 @@ public class DepartmentFragment extends ListFragment implements SearchView.OnQue
 		protected String doInBackground(Void... params) {
 
 			departments.clear();
-			String link = "http://hopper.wlu.ca/~wluexams/php/Departments/list.php";
+			String link = Config.serverURL + "/Departments/list.php";
 			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			DatabaseConnection conn = new DatabaseConnection();
 			String jsonResult = conn.getData(link, nameValuePairs);

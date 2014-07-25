@@ -15,7 +15,6 @@ import org.apache.http.util.EntityUtils;
 
 public class DatabaseConnection {
 
-
 	public String getData(String link, ArrayList<NameValuePair> nameValuePairs) {
 
 		String line = null;
@@ -25,18 +24,17 @@ public class DatabaseConnection {
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity httpEntity = response.getEntity();
-	        line = EntityUtils.toString(httpEntity);
-	        
-			
+			line = EntityUtils.toString(httpEntity);
+
 		} catch (ClientProtocolException e) {
 
 			e.printStackTrace();
-			
+
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
-		
+
 		return line;
 
 	}

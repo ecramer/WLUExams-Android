@@ -152,7 +152,7 @@ public class ExamDetailFragment extends Fragment {
 					"MyPref", 0); // 0 - for private mode
 			String userID = pref.getString("userID", null);
 
-			String link = "http://hopper.wlu.ca/~wluexams/php/Users/Exams/add.php";
+			String link = Config.serverURL + "/Users/Exams/add.php";
 			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			nameValuePairs.add(new BasicNameValuePair("userID", userID));
 			nameValuePairs.add(new BasicNameValuePair("examID", examID));
@@ -184,7 +184,7 @@ public class ExamDetailFragment extends Fragment {
 					"MyPref", 0); // 0 - for private mode
 			String userID = pref.getString("userID", null);
 
-			String link = "http://hopper.wlu.ca/~wluexams/php/Users/Exams/remove.php";
+			String link = Config.serverURL + "/Users/Exams/remove.php";
 			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			nameValuePairs.add(new BasicNameValuePair("userID", userID));
 			nameValuePairs.add(new BasicNameValuePair("examID", examID));
@@ -216,7 +216,7 @@ public class ExamDetailFragment extends Fragment {
 					"MyPref", 0); // 0 - for private mode
 			String userID = pref.getString("userID", null);
 
-			String link = "http://hopper.wlu.ca/~wluexams/php/Users/Exams/check.php";
+			String link = Config.serverURL + "/Users/Exams/check.php";
 			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			nameValuePairs.add(new BasicNameValuePair("userID", userID));
 			nameValuePairs.add(new BasicNameValuePair("examID", examID));
